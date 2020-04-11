@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <title>CDS Marks Cal</title>
+</head>
+<body style="text-align: center;">
+    <header>
+        <h1>CDS Marks Cal</h1>
+    </header>
+    <main>
+        <form style="width: 40%; margin: 0 auto;">
+            <label for="right"> Right
+                <input type="number" class="u-full-width" id="right" name="right" required>
+            </label>
+            <label for="wrong"> Wrong 
+                <input type="number" class="u-full-width" id="wrong" name="wrong" required>
+            </label>
+            <button class="button-primary">Enter</button>
+        </form>
+        <div>
+            <p></p>
+            <h4 id="marks"></h4>
+        </div>
+    </main>
+
+    <script>
+        const rightW = 0.8333333333  // 5/6
+        const wrongW = 0.2777777778   // 5/18
+        const form = document.querySelector('form')
+        const  marks = document.getElementById('marks')
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault()
+            const formData = new FormData(form)
+            const right = formData.get('right')
+            const wrong = formData.get('wrong')
+            
+            let ans = (rightW * Number(right)) - (wrongW * Number(wrong))
+            ans = +(Math.round(ans + "e+2")  + "e-2");  //rounding the number to nearest 2 decimal
+            marks.textContent = ans
+            
+        })
+
+        
+    </script>
+</body>
+</html>

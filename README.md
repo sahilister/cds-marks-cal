@@ -1,2 +1,2 @@
-# cdse-marks-cal
-A cdse marks calculator made for a friend
+# cds-marks-cal
+A cds marks calculator made for a friend
