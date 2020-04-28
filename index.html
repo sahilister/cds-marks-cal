@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="style.css">
     <title>CDS Marks Cal</title>
 </head>
 <body style="text-align: center;">
@@ -18,33 +19,87 @@
             <label for="wrong"> Wrong 
                 <input type="number" min="0" class="u-full-width" id="wrong" name="wrong" required>
             </label>
+            <b>Select Paper:</b>
+
+            <!-- <label for="paper">
+                <input type="radio" id="paper" name="paper" value="math" checked>
+                    <label for="math">Math</label>
+                <input type="radio" id="paper" name="paper" value="eng-gk">
+                    <label for="eng-gk">English/GK</label>
+            </label> -->
+            <div class="desktop">
+                <input id="toggle-on" class="toggle toggle-left" name="paper" value="math" type="radio">
+                    <label for="toggle-on" class="btn">Math</label>
+
+                <input id="toggle-off" class="toggle toggle-right" name="paper" value="eng-gk" type="radio">
+                    <label for="toggle-off" class="btn">Others</label>
+            </div>
+
+            <div class="mobile">
+                <div>
+                    <input name="paper" id="math" value="math" type="radio" checked>
+                    <label for="math">Math</label>
+                </div>
+                <div>
+                    <input name="paper" id="eng-gk" value="eng-gk" type="radio">
+                    <label for="eng-gk">Others</label>
+                </div>
+            </div>
+            <p></p>
             <button class="button-primary">Enter</button>
         </form>
         <div>
             <p></p>
             <h4 id="marks"></h4>
         </div>
+    
+
+<!-- 
+
+    <input id="toggle-on" class="toggle toggle-left" name="paper" value="math" type="radio" checked>
+        <label for="toggle-on" class="btn">Math</label>
+    <input id="toggle-off" class="toggle toggle-right" name="paper" value="eng-gk" type="radio">
+        <label for="toggle-off" class="btn">Others</label> -->
+
+
+
+
+
+
+
+
+
+
+
+
     </main>
 
+
+
+
+
+
+
     <script>
-        const rightW = 0.8333333333  // 5/6
-        const wrongW = 0.2777777778   // 5/18
+        // const rightW = 0.8333333333  // 5/6   for eng/gk      1 mark for maths
+        // const wrongW = 0.2777777778   // 5/18  for eng/gk      0.333333333 for maths
         const form = document.querySelector('form')
-        const  marks = document.getElementById('marks')
+        const marks = document.getElementById('marks')
 
         form.addEventListener('submit', (event) => {
             event.preventDefault()
             const formData = new FormData(form)
             const right = formData.get('right')
             const wrong = formData.get('wrong')
+            const paper = formData.get('paper')
+
+            const rightW = (paper == "math") ? 1 : 0.8333333333
+            const wrongW = (paper == "math") ? 0.333333333 : 0.2777777778
             
             let ans = (rightW * Number(right)) - (wrongW * Number(wrong))
             ans = +(Math.round(ans + "e+2")  + "e-2");  //rounding the number to nearest 2 decimal
-            marks.textContent = ans
-            
+            marks.textContent = ans 
         })
-
-        
     </script>
 </body>
 </html>
