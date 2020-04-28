@@ -1,14 +1,10 @@
 @media only screen 
-and (max-width : 450px) {
+and (max-width : 360px) {
     .desktop {
         display: none;
     }
     input[type=radio],
     input.radio {
-      /* float: left;
-      clear: none;
-      margin: 2px 0 0 2px; 
-      width: auto;  */
       width: 15px;
     }
     .mobile label {
@@ -18,17 +14,17 @@ and (max-width : 450px) {
 }
 
 @media only screen 
-and (min-width : 451px) { 
+and (min-width : 361px) { 
     .mobile {
         display: none;
     }
     .btn {
-        border: 3px solid #1a1a1a;
+        border: 2px solid #1a1a1a;
         display: inline-block;
-        padding: 10px;
+        padding: 3px;
         position: relative;
         text-align: center;
-        transition: background 600ms ease, color 600ms ease;
+        transition:  400ms ease, color 400ms ease;
     }
     input[type="radio"].toggle {
         display: none;
@@ -66,7 +62,7 @@ and (min-width : 451px) {
     input[type="radio"].toggle:checked + label {
         cursor: default;
         color: #fff;
-        transition: color 200ms;
+        transition: color 100ms;
     }
     input[type="radio"].toggle:checked + label:after {
         left: 0;
